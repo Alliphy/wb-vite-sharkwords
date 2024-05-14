@@ -43,28 +43,28 @@ const initSharkwords = () => {
       // if incorrect guess then we increase the numWrong count and update out shark image based on wrong guesses
       numWrong += 1; 
       console.log(numWrong)
-      // if (numWrong > ) {
-        //   alert ("You Were Eaten By Sharks");
-        // }
+
         setSharkImage(sharkImgEl, numWrong);
       }
       // set wordIsComplete to true if every letter-box is a string
       const isWordComplete = Array.from(document.querySelectorAll(".letter-box")).every((el) => el.innerText !== "",
     )
 
-      if (isWordComplete === true || numWrong >= word.length) {
+      if (isWordComplete === true || numWrong >= 5) {
       document.querySelectorAll("button").forEach((btn) => {
         btn.setAttribute("disabled", true) 
       })
-    };
+      // display message if the user wins or runs out of guesses
       const displayMessage = document.getElementById("game-status");
       if (isWordComplete === true) {
         displayMessage.textContent = "YOU WIN!"
       } else {
         displayMessage.textContent = "YOU WERE EATEN BY SHARKS!"
       }
+    };
     }
     
+    // selecting our letter-buttons id to listen for handleGuess
     setupGuesses(document.querySelector('#letter-buttons'), handleGuess);
     
   // see if isLetterInWord function works by console logging
